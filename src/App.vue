@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Nav/>
-    <Map class="map"/>
+    <Map/>
   </div>
 </template>
 
@@ -19,8 +19,4 @@ export default {
 </script>
 
 <style>
-.map{
-  text-align: center;
-  padding-top: 10px;
-}
 </style>
