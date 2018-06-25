@@ -11,9 +11,7 @@ const getters = {
 const mutations = {
   swapCell(state, { x, y }){
     let y2 = state.cells[y]
-    y2[x] = !y2[x]
-    Vue.set(state.cells, y, y2)
-    console.log(state.cells[y])
+    Vue.set(y2, x, !y2[x])
   },
   setCells(state, cells){
     for (var y in cells){

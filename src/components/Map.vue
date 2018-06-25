@@ -12,6 +12,13 @@
           </tr>
         </table>
       </div>
+      <div>
+        <v-btn 
+          v-on:click="saveCells"
+        >
+          Save Grid
+        </v-btn>
+      </div>
     </v-layout>
   </v-container>
 </template>
@@ -22,6 +29,12 @@ import Cell from './Cell'
 export default {
   components: {
     Cell
+  },
+  
+  methods: {
+    saveCells(){
+      console.log("Saving!")
+    }
   }
 }
 </script>
