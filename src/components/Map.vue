@@ -5,8 +5,8 @@
         <table class="grid">
           <tr v-bind:key=y v-for="y in 100">
             <Cell
-              v-bind:x=x
-              v-bind:y=y 
+              v-bind:x=x-1
+              v-bind:y=y-1
               v-bind:key=x
               v-for="x in 98"/>
           </tr>
@@ -18,21 +18,10 @@
 
 <script>
 import Cell from './Cell'
-import {mapState} from 'vuex'
 
 export default {
   components: {
     Cell
-  },
-
-  computed: {
-    ...mapState( 'Cells', {
-      cells: 'cells'
-    })
-  },
-
-  created () {
-    console.log(this.cells)
   }
 }
 </script>

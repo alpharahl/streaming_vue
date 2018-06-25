@@ -9,24 +9,40 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   data () {
     return {
-      selected: false,
       elevator: false,
-      escalator: false
+      escalator: false,
     }
   },
 
   props: [
     'x',
-    'y' 
+    'y',
+    'selectedProp'
   ],
 
   methods: {
     select(){
-      this.selected = !this.selected
+      this.$store.commit('Cells/swapCell', {'x': this.x, 'y': this.y})
+      this.$store.dispatch('Cells/sendCells')
     }
+  },
+
+  computed: {
+    selected () {
+      try {
+        return this.cells[this.y][this.x]
+      } catch {
+        return false
+      }
+    },
+    ...mapState( 'Cells', {
+      cells: 'cells'
+    })
   }
 }
 </script>
