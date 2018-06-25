@@ -3,10 +3,11 @@
     <v-layout row wrap align-center>
       <div class="map">
         <table class="grid">
-          <tr v-for="y in 100">
+          <tr v-bind:key=y v-for="y in 100">
             <Cell
               v-bind:x=x
               v-bind:y=y 
+              v-bind:key=x
               v-for="x in 98"/>
           </tr>
         </table>
@@ -17,14 +18,21 @@
 
 <script>
 import Cell from './Cell'
+import {mapState} from 'vuex'
 
 export default {
   components: {
     Cell
   },
 
+  computed: {
+    ...mapState( 'Cells', {
+      cells: 'cells'
+    })
+  },
+
   created () {
-    console.log(this)
+    console.log(this.cells)
   }
 }
 </script>
