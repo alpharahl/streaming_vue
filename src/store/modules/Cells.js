@@ -15,7 +15,12 @@ const mutations = {
   },
   setCells(state, cells){
     for (var y in cells){
-      Vue.set(state.cells, y, cells[y])
+      let row = cells[y]
+      let rowSimple = []
+      for (var r in row){
+        rowSimple.push(row[r]["walkable"])
+      }
+      Vue.set(state.cells, y, rowSimple)
     }
   }
 }
@@ -28,6 +33,7 @@ const actions = {
     })
   },
   sendCells({ state }){
+    console.log(state.cells)
     axios.post('/api/bar', {
       blob: state.cells
     }).then(response => {

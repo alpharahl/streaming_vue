@@ -28,7 +28,6 @@ export default {
   methods: {
     select(){
       this.$store.commit('Cells/swapCell', {'x': this.x, 'y': this.y})
-      // this.$store.dispatch('Cells/sendCells')
     }
   },
 

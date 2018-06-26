@@ -33,7 +33,7 @@ export default {
   
   methods: {
     saveCells(){
-      console.log("Saving!")
+      this.$store.dispatch('Cells/sendCells')
     }
   }
 }
