@@ -22,6 +22,13 @@ const mutations = {
       }
       Vue.set(state.cells, y, rowSimple)
     }
+  },
+  disableAll(state){
+    for (var y in state.cells){
+      let y2 = state.cells[y]
+      y2 = y2.fill(false)
+      Vue.set(state.cells, y, y2)
+    }
   }
 }
 
@@ -33,13 +40,10 @@ const actions = {
     })
   },
   sendCells({ state }){
-    console.log(state.cells)
     axios.post('/api/bar', {
       blob: state.cells
     }).then(response => {
-      console.log(response.data)
     })
-    
   }
 }
 

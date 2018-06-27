@@ -18,6 +18,11 @@
         >
           Save Grid
         </v-btn>
+        <v-btn
+          v-on:click="disableAll"
+        >
+          Disable All
+        </v-btn>
       </div>
     </v-layout>
   </v-container>
@@ -34,6 +39,9 @@ export default {
   methods: {
     saveCells(){
       this.$store.dispatch('Cells/sendCells')
+    },
+    disableAll(){
+      this.$store.commit('Cells/disableAll')
     }
   }
 }
