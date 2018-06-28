@@ -5,29 +5,36 @@ const state = {
   cells: {}
 }
 
+const defaultCell = {
+  walkable: false,
+  linked_cells: []
+}
+
 const getters = {
 }
 
 const mutations = {
-  swapCell(state, { x, y }){
-    let y2 = state.cells[y]
-    Vue.set(y2, x, !y2[x])
+  swapCell(state, { x, y}){
+    Vue.set(state.cells[y][x], "walkable", !state.cells[y][x]["walkable"])
   },
   setCells(state, cells){
+    console.log(cells)
     for (var y in cells){
       let row = cells[y]
       let rowSimple = []
       for (var r in row){
-        rowSimple.push(row[r]["walkable"])
+        rowSimple.push(row[r])
       }
       Vue.set(state.cells, y, rowSimple)
     }
+    window.x = state.cells
   },
   disableAll(state){
-    for (var y in state.cells){
-      let y2 = state.cells[y]
-      y2 = y2.fill(false)
-      Vue.set(state.cells, y, y2)
+    for (let y=0; y < 100; y += 1){
+      for (let x=0; x < 98; x += 1){
+        let x2 = defaultCell
+        state.cells[y][x] = x2
+      }
     }
   }
 }

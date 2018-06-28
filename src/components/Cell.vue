@@ -34,7 +34,7 @@ export default {
   computed: {
     selected () {
       try {
-        return this.cells[this.y][this.x]
+        return this.cells[this.y][this.x]["walkable"]
       } catch {
         return false
       }
