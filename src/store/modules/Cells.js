@@ -39,6 +39,35 @@ const mutations = {
   },
   swapEdit(state){
     state.edit = !state.edit
+  },
+  clearNav(state){
+    for (var y in state.cells){
+      for (var x in state.cells[y]){
+        if (state.cells[y][x]["nav"]){
+          Vue.set(state.cells[y][x], "nav", false)   
+        }
+      }
+    }
+  },
+  setNav(state,cells){
+    for (var y in state.cells){
+      for (var x in state.cells[y]){
+        if (state.cells[y][x]["nav"]){
+          console.log("cleaning:", x, y)
+          Vue.set(state.cells[y][x], "nav", false)   
+        }
+      }
+    }
+
+    for (var c in cells){
+      var cCell = cells[c]
+      Vue.set(
+        state.cells[cCell[1]][cCell[0]],
+        "nav",
+        true
+      )
+      console.log(cCell, state.cells[cCell[1]][cCell[0]])
+    }
   }
 }
 

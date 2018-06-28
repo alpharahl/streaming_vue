@@ -33,7 +33,8 @@ export default {
 
   methods: {
     nav(){
-      navigate([37,38],[80,40], this.cells)
+      this.$store.commit('Cells/setNav',
+       navigate([37,38],[80,40], this.cells))
     }
   },
 
@@ -41,6 +42,10 @@ export default {
     ...mapState( 'Cells', {
       cells: 'cells'
     })
+  },
+
+  mounted () {
+    this.$store.commit('Cells/clearNav')
   }
 }
 </script>

@@ -7,7 +7,7 @@ const reconstructPath = function(cameFrom, current){
     current = cameFrom[current]
     finalPath.push(current)
   }
-  console.log(finalPath)
+  return finalPath
 }
 
 

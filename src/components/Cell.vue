@@ -3,7 +3,8 @@
     class="cell"
     v-on:click="select()"
     v-bind:class="{ 
-      inactive: !selected && edit
+      inactive: !selected && edit,
+      navigate: nav
     }"
   />
 </template>
@@ -44,6 +45,13 @@ export default {
         return false
       }
     },
+    nav () {
+      try {
+        return this.cells[this.y][this.x]["nav"]
+      } catch {
+        return false
+      }
+    },
     ...mapState( 'Cells', {
       cells: 'cells',
       edit: 'edit'
@@ -61,5 +69,9 @@ export default {
 .inactive {
   background-color: rgba(114, 3, 3, 0.8);
   border: 1px solid black;
+}
+
+.navigate {
+  background-color: white;
 }
 </style>
