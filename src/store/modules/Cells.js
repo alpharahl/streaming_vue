@@ -53,7 +53,6 @@ const mutations = {
     for (var y in state.cells){
       for (var x in state.cells[y]){
         if (state.cells[y][x]["nav"]){
-          console.log("cleaning:", x, y)
           Vue.set(state.cells[y][x], "nav", false)   
         }
       }
@@ -66,8 +65,17 @@ const mutations = {
         "nav",
         true
       )
-      console.log(cCell, state.cells[cCell[1]][cCell[0]])
     }
+  },
+  linkCells(state, {cell1, cell2}){
+    console.log(cell1, cell2)
+    let c1x = cell1[0]
+    let c1y = cell1[1]
+    let c2x = cell2[0]
+    let c2y = cell2[1]
+    Vue.set(state.cells[c1y][c1x], "linked_cells", cell2)
+    Vue.set(state.cells[c2y][c2x], "linked_cells", cell1)
+    console.log("C1:", state.cells[c1y][c1x], "C2", state.cells[c2y][c2x])
   }
 }
 

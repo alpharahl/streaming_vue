@@ -4,6 +4,7 @@
     <v-spacer></v-spacer>
     <router-link to="/map">Map</router-link>
     <router-link to="/map/edit">Edit</router-link>
+    <router-link to="/map/link">Link</router-link>
     <v-toolbar-items class="hidden-sm-and-down">
     </v-toolbar-items>
   </v-toolbar>

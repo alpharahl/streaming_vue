@@ -43,6 +43,11 @@ const getNeighbors = function(current, cells){
       }
     }
   }
+  // Check for linked cells (handles stairs/elevators/escalators)
+  var linked = cells[current[1]][current[0]]["linked_cells"]
+  if (linked.length > 0){
+    neighbors.push([linked[0],linked[1]].map(Number))
+  }
   return neighbors
 }
 
@@ -99,7 +104,7 @@ export function navigate(start, goal, cells){
   while (openSet.length != 0){
     let current = getNodeInOpenSetWithLowestFScore(openSet, fScore)
 
-    console.log("Comparing", current, goal)
+    console.log("Comparing", current, goal, count)
     if (goalCheck(current,goal)){
       return reconstructPath(cameFrom, current)
     }
@@ -149,7 +154,7 @@ export function navigate(start, goal, cells){
     // console.log("current is: ", current, "openSet is: ", openSet, "closedSet:", closedSet)
     count++
 
-    if (count > 100){
+    if (count > 1000){
       openSet = []
     }
 

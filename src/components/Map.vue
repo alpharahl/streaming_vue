@@ -16,6 +16,7 @@
       <div>
         
         <v-btn v-on:click="nav">Nav</v-btn>
+        <v-btn v-on:click="clearNav">Clear Nav</v-btn>
       </div>
     </v-layout>
   </v-container>
@@ -34,7 +35,11 @@ export default {
   methods: {
     nav(){
       this.$store.commit('Cells/setNav',
-       navigate([37,38],[80,40], this.cells))
+        navigate([37,38],[60, 79], this.cells))
+      console.log(this.cells)
+    },
+    clearNav(){
+      this.$store.commit('Cells/clearNav')
     }
   },
 

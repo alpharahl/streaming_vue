@@ -72,6 +72,7 @@ export default {
 }
 
 .navigate {
-  background-color: white;
+  background-color: rgb(249, 253, 4);
+  border-radius: 50%;
 }
 </style>
