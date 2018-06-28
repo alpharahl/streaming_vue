@@ -12,17 +12,10 @@
           </tr>
         </table>
       </div>
+      <router-view/>
       <div>
-        <v-btn 
-          v-on:click="saveCells"
-        >
-          Save Grid
-        </v-btn>
-        <v-btn
-          v-on:click="disableAll"
-        >
-          Disable All
-        </v-btn>
+        
+        <v-btn v-on:click="nav">Nav</v-btn>
       </div>
     </v-layout>
   </v-container>
@@ -30,18 +23,16 @@
 
 <script>
 import Cell from './Cell'
+import {navigate} from '../helpers/navLogic'
 
 export default {
   components: {
     Cell
   },
-  
+
   methods: {
-    saveCells(){
-      this.$store.dispatch('Cells/sendCells')
-    },
-    disableAll(){
-      this.$store.commit('Cells/disableAll')
+    nav(){
+      navigate()
     }
   }
 }
