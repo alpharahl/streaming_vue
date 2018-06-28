@@ -24,6 +24,7 @@
 <script>
 import Cell from './Cell'
 import {navigate} from '../helpers/navLogic'
+import {mapState} from 'vuex'
 
 export default {
   components: {
@@ -32,8 +33,14 @@ export default {
 
   methods: {
     nav(){
-      navigate()
+      navigate([37,38],[80,40], this.cells)
     }
+  },
+
+  computed: {
+    ...mapState( 'Cells', {
+      cells: 'cells'
+    })
   }
 }
 </script>

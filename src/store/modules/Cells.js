@@ -2,7 +2,8 @@ import axios from 'axios';
 import Vue from 'vue';
 
 const state = {
-  cells: {}
+  cells: {},
+  edit: false
 }
 
 const defaultCell = {
@@ -18,7 +19,6 @@ const mutations = {
     Vue.set(state.cells[y][x], "walkable", !state.cells[y][x]["walkable"])
   },
   setCells(state, cells){
-    console.log(cells)
     for (var y in cells){
       let row = cells[y]
       let rowSimple = []
@@ -36,6 +36,9 @@ const mutations = {
         state.cells[y][x] = x2
       }
     }
+  },
+  swapEdit(state){
+    state.edit = !state.edit
   }
 }
 
@@ -49,7 +52,6 @@ const actions = {
   sendCells({ state }){
     axios.post('/api/bar', {
       blob: state.cells
-    }).then(response => {
     })
   }
 }

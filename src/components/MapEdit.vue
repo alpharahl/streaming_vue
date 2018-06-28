@@ -19,6 +19,14 @@ export default {
     disableAll(){
       this.$store.commit('Cells/disableAll')
     }
+  },
+
+  mounted () {
+    this.$store.commit('Cells/swapEdit')
+  },
+
+  beforeDestroy () {
+    this.$store.commit('Cells/swapEdit')
   }
 }
 </script>

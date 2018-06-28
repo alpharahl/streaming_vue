@@ -3,7 +3,7 @@
     class="cell"
     v-on:click="select()"
     v-bind:class="{ 
-      inactive: !selected
+      inactive: !selected && edit
     }"
   />
 </template>
@@ -27,7 +27,12 @@ export default {
 
   methods: {
     select(){
-      this.$store.commit('Cells/swapCell', {'x': this.x, 'y': this.y})
+      if (this.edit) {
+        this.$store.commit('Cells/swapCell', {'x': this.x, 'y': this.y})  
+      } else {
+        console.log(this.x, this.y)
+      }
+      
     }
   },
 
@@ -40,7 +45,8 @@ export default {
       }
     },
     ...mapState( 'Cells', {
-      cells: 'cells'
+      cells: 'cells',
+      edit: 'edit'
     })
   }
 }
@@ -50,10 +56,10 @@ export default {
 .cell{
   width: 5px;
   height: 5px;
-  border: 1px solid black;
 }
 
 .inactive {
   background-color: rgba(114, 3, 3, 0.8);
+  border: 1px solid black;
 }
 </style>
