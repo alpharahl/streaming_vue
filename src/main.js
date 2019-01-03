@@ -12,10 +12,12 @@ store.dispatch('Cells/getCells')
 
 Vue.use(Vuetify)
 
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.body.appendChild(document.createElement('schedule'))
+  const app = new Vue({
+    el,
+    store,
+    router,
+    render: h => h(App)
 
-new Vue({
-  store,
-  router,
-  render: h => h(App)
-}).$mount('#app')
-
+})

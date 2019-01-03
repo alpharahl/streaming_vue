@@ -41,14 +41,14 @@ export default {
     selected () {
       try {
         return this.cells[this.y][this.x]["walkable"]
-      } catch {
+      } catch(e) {
         return false
       }
     },
     nav () {
       try {
         return this.cells[this.y][this.x]["nav"]
-      } catch {
+      } catch(e) {
         return false
       }
     },

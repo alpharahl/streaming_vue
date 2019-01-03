@@ -3,12 +3,12 @@
     <v-layout row wrap align-center>
       <div class="map">
         <table class="grid">
-          <tr v-bind:key=y v-for="y in 100">
+          <tr v-bind:key=y v-for="y in 96">
             <Cell
               v-bind:x=x-1
               v-bind:y=y-1
               v-bind:key=x
-              v-for="x in 98"/>
+              v-for="x in 80"/>
           </tr>
         </table>
       </div>
@@ -57,7 +57,7 @@ export default {
 
 <style>
 .map{
-  background: url(../assets/map_cropped.png) no-repeat center top;
+  background: url(../../../assets/gaylord_map_-_full.png) no-repeat center top;
   background-size: contain;
   text-align: center;
 }

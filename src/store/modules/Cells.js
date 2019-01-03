@@ -30,8 +30,8 @@ const mutations = {
     window.x = state.cells
   },
   disableAll(state){
-    for (let y=0; y < 100; y += 1){
-      for (let x=0; x < 98; x += 1){
+    for (let y=0; y < 96; y += 1){
+      for (let x=0; x < 80; x += 1){
         let x2 = defaultCell
         state.cells[y][x] = x2
       }
